@@ -58,6 +58,9 @@ class Computer(models.Model):
         (MALONEY_FOUR, 'MALONEY 4'),
         (OTHER, 'OTHER')
     )
+    T400 = 'T400'
+    T410 = 'T410'
+    T420 = 'T420'
     T440 = "T440"
     T460 = 'T460'
     T470 = "T470"
@@ -72,15 +75,46 @@ class Computer(models.Model):
     P10S7 = '10S7'
     P3318 = '3318'
     P3391 = "3391"
-    CARBON ='CARBON'
+    CARBON = 'CARBON'
     P10ML = '10ML'
     P5205 = '5205'
     X1_YOGA = 'X1 YOGA'
     P0870 = "0870"
-    T410 = 'T410'
+
     MINI = 'MINI'
     SURFACE_LAPTOP = "SURFACE LAPTOP"
     MODEL_OTHER = "OTHER"
+    MODEL_TYPES = (
+        (T410, 'T410'),
+        (T420, 'T420'),
+        (T440, 'T440'),
+        (T460, 'T460'),
+        (T470, 'T470'),
+        (T480, 'T480'),
+        (T490, 'T490'),
+        (CARBON, 'CARBON'),
+        (SURFACE_LAPTOP, "SURFACE LAPTOP")
+        ,
+        (T14S, "T14S"),
+        (P10AE, '10AF'),
+        (P10AF, '10AE'),
+        (P10NS, "10NS"),
+        (P10F5, '10F5'),
+        (P10S6, '10S6'),
+        (P10S7, '10S7'),
+        (P3318, '3318'),
+        (P3391, "3391"),
+
+        (P10ML, '10ML'),
+        (P5205, '5205'),
+
+        (P0870, "0870"),
+
+        (MINI, 'MINI'),
+
+        (MODEL_OTHER, "OTHER"),
+
+    )
 
     operating_system = models.CharField(max_length=5, choices=WINDOWS_TYPE, default=WINDOWS_TEN)
     computer_name = models.CharField(max_length=7, blank=False, null=True)
@@ -88,7 +122,7 @@ class Computer(models.Model):
     user_name = models.CharField(max_length=30, blank=False, null=True)
     person_full_name = models.CharField(max_length=40, blank=False, null=True)
     time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False)
-    model_number = models.CharField(max_length=10, blank=False, null=True)
+    model_number = models.CharField(max_length=14, choices=MODEL_TYPES, blank=False, null=True)
     location = models.CharField(max_length=19, choices=LOCATION_TYPE, null=True)
     comments = models.CharField(max_length=30, blank=True, null=True)
     export_to_CSV = models.BooleanField(default=False)
