@@ -7,12 +7,10 @@
 </div>
 <br>
 <h4> Currently Viewing {{ header }}</h4>
-<table class="table table-hover">
+<table >
     <thead>
+      <tr>
 
-
-    <tr>
-        <th>ID</th>
         <th>Operating System</th>
         <th>Computer Name</th>
         <th>Serial Number</th>
@@ -21,22 +19,45 @@
         <th>Location</th>
         <th>Model</th>
         <th>Comments</th>
+
+
     </tr>
     </thead>
     <tbody>
     {% for item in items %}
     <tr>
-        <td>{{ item.pk }}</td>
+
         <td>{{ item.operating_system }}</td>
         <td>{{ item.computer_name}}</td>
         <td>{{ item.serial_number}}</td>
         <td>{{ item.user_name}}</td>
-        <td>{{item.full_name}}</td>
+        <td>{{item.person_full_name}}</td>
         <td>{{item.location}}</td>
-        <td>{{item.model_type}}</td>
+        <td>{{item.model_number}}</td>
         <td>{{item.comments}}</td>
+
     </tr>
+
     {% endfor %}
     </tbody>
+<div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ items.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ items.number }} of {{ items.paginator.num_pages }}
+        </span>
+
+        {% if items.has_next %}
+            <a href="?page={{ items.next_page_number }}">next</a>
+            <a href="?page={{ items.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 </table>
+
+
 {% endblock %}

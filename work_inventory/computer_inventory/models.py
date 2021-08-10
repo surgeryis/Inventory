@@ -5,8 +5,8 @@ from django.db import models
 
 
 class Computer(models.Model):
-    WINDOWS_TEN = 'WIN10'
-    WINDOWS_SEVEN = 'WIN7'
+    WINDOWS_TEN = 'WINDOWS 10'
+    WINDOWS_SEVEN = 'WINDOWS 7'
     WINDOWS_TYPE = (
         (WINDOWS_TEN, 'WINDOWS 10'),
         (WINDOWS_SEVEN, 'WINDOWS 7')
@@ -116,15 +116,15 @@ class Computer(models.Model):
 
     )
 
-    operating_system = models.CharField(max_length=5, choices=WINDOWS_TYPE, default=WINDOWS_TEN)
-    computer_name = models.CharField(max_length=7, blank=False, null=True)
-    serial_number = models.CharField(max_length=7, blank=False, null=True)
+    operating_system = models.CharField(max_length=20, choices=WINDOWS_TYPE, default=WINDOWS_TEN)
+    computer_name = models.CharField(max_length=20, blank=False, null=True)
+    serial_number = models.CharField(max_length=20, blank=False, null=True)
     user_name = models.CharField(max_length=30, blank=False, null=True)
     person_full_name = models.CharField(max_length=40, blank=False, null=True)
     time_stamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     model_number = models.CharField(max_length=14, choices=MODEL_TYPES, blank=False, null=True)
-    location = models.CharField(max_length=19, choices=LOCATION_TYPE, null=True)
-    comments = models.CharField(max_length=30, blank=True, null=True)
+    location = models.CharField(max_length=30, choices=LOCATION_TYPE, null=True)
+    comments = models.CharField(max_length=50, blank=True, null=True)
     export_to_CSV = models.BooleanField(default=False)
 
     def __str__(self):

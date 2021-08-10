@@ -1,0 +1,13 @@
+td{
+    color: white;
+}
+
+
+table, tbody, thead {
+    width: auto;
+}
+@media only screen and (max-width:375px) {
+    table, tbody, thead {
+    width: 75%;
+}
+}

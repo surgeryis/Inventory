@@ -276,6 +276,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  color:white;
 }
 
 caption {
@@ -288,6 +289,7 @@ caption {
 th {
   text-align: inherit;
   text-align: -webkit-match-parent;
+  color: white;
 }
 
 thead,
@@ -299,6 +301,7 @@ th {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
+
 }
 
 label {
@@ -2085,6 +2088,12 @@ progress {
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 300.98px) {
+  .table-responsive-sm {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 @media (max-width: 575.98px) {

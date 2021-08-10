@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block body%}
+
+<table>
+    <h2>Computers</h2>
+
+        <thead style="width: 100%;">
+         <tr>
+                <th>Computer Name</th>
+                <th>Operating System</th>
+                <th>Serial Number</th>
+                <th>User Name</th>
+                <th>Full Name</th>
+                <th>Model</th>
+                <th>Location</th>
+                <th>Comments</th>
+        </tr>
+            </thead>
+
+{% for item in page_obj %}
+    <tbody>
+        <tr>
+            <td>{{item.computer_name}}</td>
+            <td>{{ item.operating_system}}</td>
+            <td>{{item.serial_number}}</td>
+            <td>{{item.user_name}}</td>
+            <td>{{item.person_full_name}}</td>
+            <td>{{item.model_number}}</td>
+            <td>{{ item.location }}</td>
+            <td>{{ item.comments }}</td>
+ </tr>
+</tbody>
+    {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1 &q={{ q }}">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}&q={{q}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&q={{ q }}">next</a>
+            <a href="?page={{page_obj.paginator.num_pages }}&q={{ q }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+{% endblock %}
